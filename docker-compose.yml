@@ -11,9 +11,13 @@ services:
       - APACHE_RUN_USER=#${UID}
       - APACHE_RUN_GROUP=#${UID}
     volumes:
-      - .:/var/www/html
+      - ./Laravel/:/var/www/html
+    env_file:
+      - ./Laravel/.env
+      - ./main.env
     ports:
       - ${HOST_PORT}:80
+      - 8000:8000
     networks:
       backend:
         aliases:
